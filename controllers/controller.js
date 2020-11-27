@@ -29,31 +29,6 @@ const save =(req,res)=>{
       }
 });
 }
-const create = (req, res) => {
-    let customer = {};
-
-    try{
-        // Building Customer object from upoading request's body
-        customer.firstname = req.body.firstname;
-        customer.lastname = req.body.lastname;
-        customer.address = req.body.address;
-        customer.age = req.body.age;
-    
-        // Save to MySQL database
-        Customer.create(customer).then(result => {    
-            // send uploading message to client
-            res.status(200).json({
-                message: "Upload Successfully a Customer with id = " + result.id,
-                customer: result,
-            });
-        });
-    }catch(error){
-        res.status(500).json({
-            message: "Fail!",
-            error: error.message
-        });
-    }
-}
 
 const retrieveAllCustomers = (req, res) => {
     // find all Customer information from 
